@@ -7,7 +7,7 @@ const notesService = new NoteService()
 export class GetAllNotes extends Component {
     constructor() {
         super()
-
+        this.getUpdateNotes();
         this.state = {
             allNotes: [],
             open: false,
@@ -25,18 +25,23 @@ export class GetAllNotes extends Component {
         this.getUpdateNotes();
     }
 
+    simplifiedFunction = () => {
+        console.log(" it in the get all notes");
+        this.getUpdateNotes();
 
-    getUpdateNotes() {
+    }
+
+    getUpdateNotes = async () => {
 
 
-        notesService.getAllNotes().then((response) => {
+        await notesService.getAllNotes().then((response) => {
 
             console.log(" response after getting all notes ", response);
             this.notes = response['data'].data.data
             console.log(" data in array ", this.notes);
 
 
-            this.NotesArray = this.notes.filter(function(key)  {
+            this.NotesArray = this.notes.filter(function (key) {
                 if (key.isDeleted === false && key.isArchived === false) {
                     return key
                 }
@@ -68,7 +73,7 @@ export class GetAllNotes extends Component {
     }
     render() {
         return (
-            <DisplayNotes allNotes={this.state.allNotes}></DisplayNotes>
+            <DisplayNotes allNotes={this.state.allNotes} simplifiedFunction={this.simplifiedFunction} ></DisplayNotes>
 
         )
     }

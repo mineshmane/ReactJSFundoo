@@ -80,6 +80,7 @@ export default class DashboardComponent extends Component {
                                     <MenuIcon id="menu" />
                                 </IconButton>
                             </Tooltip>
+                            
                         </Toolbar>
                         <DrawerMenu
                             appBarProps={this.state.open}

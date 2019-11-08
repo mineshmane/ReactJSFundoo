@@ -20,6 +20,7 @@ function App() {
       <Route exact path="/" component={SignIn} />
       {/* <Route path="/login" component={Login} /> */}
       <Route path="/login" component={SignIn} />
+      {/* <Route path='/resetpassword/:token' component */}
       <Route path="/register" component={SignUp} />
       <Route path="/dashboard" component={UserDashboard} />
       <Route path="/dashboard/getNotes" component={GetAllNotes} />

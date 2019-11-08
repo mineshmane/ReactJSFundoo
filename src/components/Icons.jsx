@@ -32,7 +32,6 @@ export class IconsComponent extends Component {
 
     constructor(props) {
         super(props);
-        // console.log("in display notes component ", this.props);
 
         this.state = {
             allNotes: [],
@@ -55,6 +54,7 @@ export class IconsComponent extends Component {
 
         }
         // console.log("Color Component 37: ", this.props.props.noteID)
+        console.log("in icons  component  $%$%%$%%$$$%%$%$%", this.props.isTrashed);
 
     }
 
@@ -93,6 +93,7 @@ export class IconsComponent extends Component {
 
         notesService.archiveNoteservice(noteDta).then(response => {
             console.log(response);
+            this.props.simplifiedFunction()
 
         }).catch(err => {
             console.log(err);
@@ -115,6 +116,27 @@ export class IconsComponent extends Component {
                 let newArray = this.state.allNotes
                 console.log("new array", newArray);
                 // this.getUpdateNotes();
+                this.props.simplifiedFunction()
+
+            })
+            .catch(err => {
+                console.log("Eroorrrrrr....", err);
+            })
+    }
+
+    unTrashNote = () => {
+        var note = {
+            'noteIdList': [this.props.noteId.id],
+            'isDeleted': false
+        }
+        notesService.trashNote(note)
+            .then(response => {
+                console.log(response);
+                let newArray = this.state.allNotes
+                console.log("new array", newArray);
+                // this.getUpdateNotes();
+                this.props.simplifiedFunction()
+
             })
             .catch(err => {
                 console.log("Eroorrrrrr....", err);
@@ -134,6 +156,8 @@ export class IconsComponent extends Component {
                 let newArray = this.state.allNotes
                 console.log("new array", newArray);
                 // this.getUpdateNotes();
+                this.props.simplifiedFunction()
+
             })
             .catch(err => {
                 console.log("Eroorrrrrr....", err);
@@ -155,11 +179,12 @@ export class IconsComponent extends Component {
             'color': event.target.value,
         }
         console.log(" note ", note);
- 
+
 
         notesService.changesColorNotes(note)
             .then(response => {
                 console.log(response);
+                this.props.simplifiedFunction()
 
                 // this.getUpdateNotes();
             })
@@ -275,8 +300,7 @@ export class IconsComponent extends Component {
                                     :
                                     <div style={{ width: "115px" }}>
                                         {
-                                            this.props.noteID === ''
-                                                ?
+                                            this.props.noteID === '' ?
                                                 null
                                                 :
                                                 this.props.isTrashed === true ?
@@ -293,13 +317,16 @@ export class IconsComponent extends Component {
                                                         <div className="remind-day" onClick={this.handleDeleteForeverNote}>
                                                             delete forever
                                                     </div>
+                                                        <div className="remind-day" onClick={this.unTrashNote}>
+                                                            Restore
+                                                </div>
                                                     </div>
 
 
 
                                         }
                                         {this.props.isTrashed === true ?
-                                            <div className="remind-day" onClick={this.handleRestore}>
+                                            <div className="remind-day" onClick={this.unTrashNote}>
                                                 <div>
                                                     Restore
                                                 </div>

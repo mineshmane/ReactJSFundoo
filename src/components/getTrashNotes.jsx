@@ -19,7 +19,7 @@ export class GetTrashNotes extends Component {
             searchNote: '',
             listGridView: false,
             isReminder: false,
-            isTrash: false,
+            isTrashed: true,
             isArchive: false,
             isNotes: true,
 
@@ -77,7 +77,7 @@ export class GetTrashNotes extends Component {
 
 
             <div className={slide}>
-                <DisplayNotes allNotes={this.state.allNotes}></DisplayNotes>
+                <DisplayNotes  allNotes={this.state.allNotes}></DisplayNotes>
             </div>
 
 

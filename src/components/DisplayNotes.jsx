@@ -77,6 +77,13 @@ export class DisplayNotes extends Component {
     }
 
 
+    simplifiedFunction = () => {
+        console.log(" display called ");
+        this.props.simplifiedFunction()
+
+
+    }
+
     render() {
         console.log("in display notes component ", this.props.allNotes);
 
@@ -101,7 +108,7 @@ export class DisplayNotes extends Component {
                                 style={{ backgroundColor: key.color }}>
                                 <CardBody className="user-card-body-desc">
                                     <div style={{ display: "flex" }}>
-                                        <div style={{ width: "98%" }}>
+                                        <div style={{ width: "98%" }} className="wordBreakTitle">
                                             <InputBase
                                                 id="outlined-dense-multiline"
                                                 value={key.title}
@@ -115,7 +122,7 @@ export class DisplayNotes extends Component {
                                             />
                                         </div>
                                         {(key.isPined === true) ?
-                                            <div style={{ height: "24px" }}>
+                                            <div style={{ height: "24px" }} >
                                                 <Tooltip title="Unpin note">
                                                     <img src={require('../assets/images/pin.svg')}
                                                         alt="pin" className="is-pin"
@@ -227,8 +234,8 @@ export class DisplayNotes extends Component {
                                                 onClick={() => this.handleArchive(key.id, true)}
                                             />
                                         </Tooltip> */}
-                                            {/* noteID={key.id} */}
-                                        <IconsComponent noteId={key}  ></IconsComponent>
+                                        {/* noteID={key.id} */}
+                                        <IconsComponent noteId={key} simplifiedFunction={this.simplifiedFunction}  ></IconsComponent>
 
                                         {/* <CardLink className="add-image">
                                             <Tooltip title="add image">
