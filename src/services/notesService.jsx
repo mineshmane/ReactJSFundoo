@@ -42,9 +42,20 @@ export default class NoteService {
     }
 
 
-    archiveNoteservice(data){
-        return axios.post(`${BaseURL}/archiveNotes`,data,{
-            headers:{
+    getNoteByLabel(label) {
+        console.log(" label in service ", label);
+
+        return axios.post(`${BaseURL}/getNotesListByLabel/` + label ,{}, {
+            headers: {
+                'Authorization': token
+            }
+        })
+
+    }
+
+    archiveNoteservice(data) {
+        return axios.post(`${BaseURL}/archiveNotes`, data, {
+            headers: {
                 'Authorization': token
             }
         })
@@ -77,18 +88,18 @@ export default class NoteService {
 
 
 
-    trashNote(note){
+    deleteForeverNotes(note) {
         return axios.post(`${BaseURL}/deleteForeverNotes`, note, {
-            headers:{
-                'Authorization' : token
+            headers: {
+                'Authorization': token
             }
         })
     }
 
-    deleteForeverNotes(note){
+    trashNote(note) {
         return axios.post(`${BaseURL}/trashNotes`, note, {
-            headers:{
-                'Authorization' : token
+            headers: {
+                'Authorization': token
             }
         })
     }

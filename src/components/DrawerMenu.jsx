@@ -4,7 +4,8 @@ import { MenuItem } from '@material-ui/core';
 // import { GetReminderNotes } from './ReminderNotes';
 import { GetAllLabels } from './getLabelList'
 import NoteService from '../services/notesService'
-
+// import {CreateLabel} from '../components/LabelDialog'
+import { CreateLabel } from './createLabel'
 const notesService = new NoteService()
 
 class DrawerMenu extends Component {
@@ -14,6 +15,7 @@ class DrawerMenu extends Component {
         super(props);
         this.state = {
             open: false,
+            openDialog: false,
             status: false,
             allLabels: [],
             trash: false
@@ -36,13 +38,20 @@ class DrawerMenu extends Component {
             })
     }
 
+
+    // handleClickOpen(){
+    //     this.setState({
+    //         openDialog: !this.openDialog,
+    //     })
+
+    // }
     handleReminder = () => {
         // this.props.DrawerMenuToDashboard(true, false, false, false);
         this.props.props.history.push('/dashboard/reminder');
         //    / this.props.getReminder()
     }
     handleNotes = () => {
-        this.props.props.history.push('/dashboard/getNotes')
+        this.props.props.history.push('/dashboard/notes')
     }
 
 
@@ -50,10 +59,14 @@ class DrawerMenu extends Component {
         // this.props.DrawerMenuToDashboard(false, false, true, false);
         this.props.props.history.push('/dashboard/Archive');
     }
-    handleTrashed=()=>{
-        this.props.props.history.push('/dashboard/getTrashNotes')
+    handleTrashed = () => {
+        this.props.props.history.push('/dashboard/TrashNotes')
     }
 
+    simplifiedFunction = (labelName) => {
+        console.log(" it in the get all notes");
+        this.props.props.history.push('/dashboard/getNotesByLabel/' + labelName)
+    }
 
     render() {
 
@@ -88,8 +101,9 @@ class DrawerMenu extends Component {
                             <GetAllLabels
                                 sidebarLabel={true}
                                 props={this.props.props}
+                                simplifiedFunction={this.simplifiedFunction}
                             />
-                            <MenuItem
+                            {/* <MenuItem
                                 onClick={this.handleLabelOpen}
                                 className="drawer-links"
                             >
@@ -101,9 +115,19 @@ class DrawerMenu extends Component {
                                 </div>
 
 
-                                {/* <CreateLabel
-                            sidebarLabel = {this.state.open}
-                            /> */}
+                                <CreateLabel
+                            dialogValue = {this.state.openDialog}
+                            />
+                            </MenuItem> */}
+
+
+                            <MenuItem
+                                onClick={this.handleLabelOpen}
+                                className="drawer-links"
+                            >
+                                <CreateLabel
+                                    sidebarLabel={this.state.open}
+                                />
                             </MenuItem>
                         </div>
                     </div>

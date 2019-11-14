@@ -10,6 +10,8 @@ import { GetReminderNotes } from './components/ReminderNotes';
 import { GetAllNotes } from './components/getAllNotes';
 import { GetArchivedNotes } from './components/getArchiveNotes'
 import { GetTrashNotes } from './components/getTrashNotes'
+import {NotesByLabel} from './components/getNoteByLabel'
+import  { DashboardComponent } from './components/dashboard'
 // import { Registration } from './components/registration';
 // import { Login } from './components/login';
 function App() {
@@ -17,20 +19,24 @@ function App() {
 
 
     <Router>
-      <Route exact path="/" component={SignIn} />
+      <Route exact path="/login" component={SignIn} />
       {/* <Route path="/login" component={Login} /> */}
-      <Route path="/login" component={SignIn} />
+      {/* <Route path="/login" component={SignIn} /> */}
       {/* <Route path='/resetpassword/:token' component */}
       <Route path="/register" component={SignUp} />
       <Route path="/dashboard" component={UserDashboard} />
-      <Route path="/dashboard/getNotes" component={GetAllNotes} />
+      <Route path="/dashboard/notes" component={GetAllNotes} />
       <Route path="/createNote" component={createNote} />
       <Route path="/dashboard/reminder" component={GetReminderNotes} />
+
+      <Route path="/dashboard/getNotesByLabel/:labelName" component={NotesByLabel} />
+
+      {/* <Route path="/dashboard/getNotesByLabel" component={NotesByLabel} /> */}
 
 
 
       <Route path="/dashboard/Archive" component={GetArchivedNotes} />
-      <Route path="/dashboard/getTrashNotes" component={GetTrashNotes} />
+      <Route path="/dashboard/TrashNotes" component={GetTrashNotes} />
 
 
 

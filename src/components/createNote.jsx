@@ -11,7 +11,9 @@ import { makeStyles } from '@material-ui/core/styles';
 // import MoreOptions from './MoreOptions'
 // import CollaboratorComponent from './CollaboratorComponent';
 // import AddImage from './AddImage';
+import {GetAllNotes} from './getAllNotes'
 import { IconsComponent } from './Icons'
+const notesService = new GetAllNotes()
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -24,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 const addNotes = new NoteServices().addNotes;
-class CreateNote extends Component {
+export class CreateNote extends Component {
 
     constructor(props) {
         super(props);
@@ -113,7 +115,9 @@ class CreateNote extends Component {
                         console.log("create note 109 ", response);
                         this.setState({ newNote: response.data.status.details })
                         console.log("create note 111", this.state.newNote);
-                        this.props.getNewNote(this.state.newNote);
+                        // this.props.getNewNote(this.state.newNote);
+                        notesService.getUpdateNotes();
+                        this.props.simplifiedFunction()
                     })
                     .catch(err => {
                         console.log("Eroorrrrrr....", err);

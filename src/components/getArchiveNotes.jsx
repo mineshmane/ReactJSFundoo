@@ -13,7 +13,8 @@ export class GetArchivedNotes extends Component {
         this.state = {
             allNotes: [],
             open: false,
-            NotesArray: []
+            NotesArray: [],
+            notes:[]
 
         }
 
@@ -25,23 +26,45 @@ export class GetArchivedNotes extends Component {
         this.getReminderNoteList();
     }
 
+    simplifiedFunction = () => {
+        console.log(" it in the get all notes");
+        this.getReminderNoteList();
+
+    }
+
+
 
     getReminderNoteList() {
         notesService.getArchivedNotes().then((response) => {
-            console.log(" respoinse", response);
-            console.log(" response after getting all notes ", response);
-            this.NotesArray = response['data'].data.data
-            console.log(" data in array ", this.NotesArray);
+            // console.log(" respoinse", response);
+            // console.log(" response after getting all notes ", response);
+            this.notes = response['data'].data.data
+            // console.log(" data in array ", this.NotesArray);
+            // console.log("revered data noees data ", this.NotesArray.reverse());
+
+
+            this.NotesArray = this.notes.filter(function (key) {
+                if (key.isDeleted === false && key.isArchived === true) {
+                    return key
+                }
+
+            }
+
+            );
+
+            console.log("revered data noees data ", this.NotesArray.reverse());
 
             this.setState({ allNotes: this.NotesArray })
 
-            console.log("this data", this.state.allNotes);
+            // this.setState({ allNotes: this.NotesArray })
+
+            // console.log("this data", this.state.allNotes);
 
         })
     }
 
     render() {
 
-        return (<div>   <DisplayNotes allNotes={this.state.allNotes}></DisplayNotes></div>)
+        return (<div>   <DisplayNotes allNotes={this.state}  simplifiedFunction={this.simplifiedFunction}></DisplayNotes></div>)
     }
 }

@@ -18,6 +18,7 @@ import { IconsComponent } from './Icons'
 import { MuiThemeProvider, createMuiTheme, } from '@material-ui/core';
 import CloseIcon from "@material-ui/icons/Close";
 
+import Masonry from 'react-masonry-component';
 
 
 const useStyles = makeStyles(theme => ({
@@ -77,15 +78,38 @@ export class DisplayNotes extends Component {
     }
 
 
+    handleToggleOpen = (id, oldTitle, oldDescription) => {
+        this.setState(prevState => ({
+            modal: !prevState.modal,
+            noteId: id,
+            title: oldTitle,
+            description: oldDescription
+        }));
+        console.log("id ......", id);
+        console.log("note id ......", this.state.noteId);
+        this.props.props.history.push(`/dashboard/${id}`)
+    }
+
+
+
+showCard(){
+    console.log("in display notes component ", this.props.allNotes);
+
+}
+
     simplifiedFunction = () => {
         console.log(" display called ");
         this.props.simplifiedFunction()
 
 
     }
+    
 
     render() {
-        console.log("in display notes component ", this.props.allNotes);
+        const masonryOptions = {
+            transitionDuration: 0.5
+        };
+        console.log("in display notes upadted component ", this.props.allNotes);
 
 
         var listgridvalue = this.props.listGridView;
@@ -93,7 +117,7 @@ export class DisplayNotes extends Component {
         const modalbottom = listgridvalue ? "list-view-bottom" : "card-bottom";
         const listView = listgridvalue ? null : "card-grid";
         const containerAllnotes = listgridvalue ? null : "container-allnotes"
-        var notes = this.props.allNotes.map((key) => {
+        var notes = this.props.allNotes.allNotes.map((key) => {
             return (
                 // (
                 //     key.isArchived === false
@@ -204,6 +228,7 @@ export class DisplayNotes extends Component {
                                         </div>
                                     }
                                 </CardBody>
+                
                                 <CardBody >
                                     <div className={modalbottom}>
                                         {/* <Reminder
@@ -439,9 +464,15 @@ export class DisplayNotes extends Component {
 
         return (
             <div className={containerAllnotes}>
-                <div className={listView}>
+
+{/* <div className={listView}>
                     {notes}
-                </div>
+                </div> */}
+                <Masonry  options={masonryOptions}>  
+                {notes}
+                    
+                </Masonry>
+
 
                 <Snackbar
                     // key={this.state.messageInfo}

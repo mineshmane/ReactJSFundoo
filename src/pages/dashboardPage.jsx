@@ -68,7 +68,7 @@ export default class UserDashboard extends Component {
                             <div className="create-note-margin">
                                 {(!this.state.isTrash && !this.state.isArchive) &&
                                     <div>
-                                        <CreateNote getNewNote={this.getNewNote} />
+                                        {/* <CreateNote getNewNote={this.getNewNote} /> */}
                                     </div>
                                 }
                                 <div className={listView}>

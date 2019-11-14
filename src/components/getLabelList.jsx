@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import LabelService from '../services/LabelServices';
+import { LabelService } from '../services/LabelService';
 import { MenuItem, Checkbox, FormControlLabel, InputBase, Tooltip } from '@material-ui/core';
 import Check from '@material-ui/icons/Check'
 import Edit from '@material-ui/icons/EditOutlined'
@@ -8,7 +8,7 @@ import NoteService from '../services/notesService'
 
 const notesService = new NoteService()
 
-// const LabelServices = new LabelService();
+const LabelServices = new LabelService();
 const NoteServices = new NoteService();
 export class GetAllLabels extends Component {
     constructor(props) {
@@ -23,7 +23,7 @@ export class GetAllLabels extends Component {
             labelId: ''
         }
         this.handleLableChange = this.handleLableChange.bind(this);
-        this.handleUserLabel = this.handleUserLabel.bind(this);
+        this.handleNotesByLabel = this.handleNotesByLabel.bind(this);
     }
 
     displayCard(newLabel) {
@@ -125,7 +125,7 @@ export class GetAllLabels extends Component {
             'id': labelId,
         }
 
-        notesService.deleteNoteLabel(labelData.id)
+        LabelServices.deleteNoteLabel(labelData.id)
             .then(() => {
                 notesService.getLabels()
                     .then(allLabels => {
@@ -146,8 +146,15 @@ export class GetAllLabels extends Component {
 
 
 
-    handleUserLabel(labelName) {
-        this.props.props.history.push(`/usernote/${labelName}`, labelName)
+    handleNotesByLabel(labelName) {
+        console.log(" in labellist");
+
+        // this.props.simplifiedFunction(labelName)
+        // this.props.props.history.push(`/usernote/${labelName}`, labelName)
+        this.props.props.history.push(`/dashboard/getNotesByLabel/${labelName}`)
+        // this.props.props.history.push(`/dashboard/getNotesByLabel`)
+
+
     }
 
     handleLableChange(e, labelId) {
@@ -214,23 +221,33 @@ export class GetAllLabels extends Component {
     }
 
     handleChangeUpdateLabel = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+        // this.setState({
+        //     [e.target.name]: e.target.value
+        // })
+
+        this.setState({ label: e.target.value })
+
     }
 
     handleUpdateLabel = (labelId, labelName) => {
+        console.log(" labelId", labelId, labelName);
+
         var data = {
+
+
+            "label": this.state.label,
+            "isDeleted": false,
             'id': labelId,
-            data: {
-                "label": labelName,
-                "isDeleted": false,
-            }
+
         }
 
-        notesService.updateLabel(data)
+        console.log(" data after binding ", data);
+
+        LabelServices.updateLabel(data)
             .then(res => {
                 console.log(res);
+                console.log("resposne upadter upate ");
+
                 //   this.props.getAllLabelsToCreateLabels(true);
             })
     }
@@ -244,7 +261,7 @@ export class GetAllLabels extends Component {
         const labels = this.state.allLabels.map((key) => {
             return (
                 this.props.sidebarLabel ?
-                    <MenuItem key={key.id} onClick={() => this.handleUserLabel(key.label)} style={{ borderRadius: "0 25px 25px 0" }}>
+                    <MenuItem key={key.id} onClick={() => this.handleNotesByLabel(key.label)} style={{ borderRadius: "0 25px 25px 0" }}>
                         <img className="update-card-img cursor-pointer"
                             src={require('../assets/images/label.svg')}
                             alt="label"

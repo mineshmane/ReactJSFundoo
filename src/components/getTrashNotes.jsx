@@ -32,15 +32,23 @@ export class GetTrashNotes extends Component {
         this.getTrashNoteList();
     }
 
+    simplifiedFunction = () => {
+        console.log(" it in the get all notes");
+        this.getTrashNoteList();
+
+    }
+
+
     getTrashNoteList() {
         console.log(" calling trash componnenet ");
 
-        notesService.getReminders().then((response) => {
+        notesService.getTrashedNotes().then((response) => {
             console.log(" respoinse", response);
             console.log(" response after getting all notes ", response);
             this.NotesArray = response['data'].data.data
             console.log(" data in array ", this.NotesArray);
 
+            console.log("revered data noees data ", this.NotesArray.reverse());
            
             
 
@@ -77,7 +85,7 @@ export class GetTrashNotes extends Component {
 
 
             <div className={slide}>
-                <DisplayNotes  allNotes={this.state.allNotes}></DisplayNotes>
+                <DisplayNotes  allNotes={this.state} simplifiedFunction={this.simplifiedFunction}></DisplayNotes>
             </div>
 
 

@@ -51,6 +51,11 @@ export class IconsComponent extends Component {
             openSnackbar: false,
             messageInfo: '',
             collaborator: [],
+            open: false,
+            isDeleted: false,
+            addLabel: false,
+            label: '',
+          
 
         }
         // console.log("Color Component 37: ", this.props.props.noteID)
@@ -66,6 +71,8 @@ export class IconsComponent extends Component {
     }
 
     handleAddLabel() {
+        console.log(" add label called");
+        
         this.setState({ addLabel: !this.state.addLabel });
     }
     handleToggle = () => {
@@ -194,6 +201,17 @@ export class IconsComponent extends Component {
     }
 
 
+    openReminder(){
+
+
+        this.setState({
+            open: !this.state.open,
+            addLabel: false
+        });
+        console.log(this.state.open);
+    }
+
+
 
 
 
@@ -224,7 +242,7 @@ export class IconsComponent extends Component {
                     <img src={require('../assets/images/alert.svg')}
                         className="img"
                         alt="remind me"
-                        onClick={this.handleToggle}
+                        onClick={this.openReminder}
                     />
                 </Tooltip>
 
@@ -305,9 +323,9 @@ export class IconsComponent extends Component {
                                                 :
                                                 this.props.isTrashed === true ?
                                                     <div className="remind-day" onClick={this.handleDeleteNote}>
-                                                        <div>
+                                                        {/* <div>
                                                             Delete Forever
-                                                            </div>
+                                                            </div> */}
                                                     </div>
                                                     :
                                                     <div >

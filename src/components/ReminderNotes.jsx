@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NoteService from '../services/notesService'
 import { DisplayNotes } from '../components/DisplayNotes'
-// import { DrawrMenuComponent } from '../components/DrawerMenu'
+import { CreateNote } from '../components/createNote'
 const notesService = new NoteService()
 
 export class GetReminderNotes extends Component {
@@ -32,12 +32,19 @@ export class GetReminderNotes extends Component {
         this.getReminderNoteList();
     }
 
+    simplifiedFunction = () => {
+        console.log(" it in the get all notes");
+        this.getReminderNoteList() 
+
+    }
+
     getReminderNoteList() {
         notesService.getReminders().then((response) => {
             console.log(" respoinse", response);
             console.log(" response after getting all notes ", response);
             this.NotesArray = response['data'].data.data
             console.log(" data in array ", this.NotesArray);
+            console.log("revered data noees data ", this.NotesArray.reverse());
 
             this.setState({ allNotes: this.NotesArray })
 
@@ -55,7 +62,11 @@ export class GetReminderNotes extends Component {
 
 
             <div className={slide}>
-                <DisplayNotes allNotes={this.state.allNotes}></DisplayNotes>
+                <div><CreateNote getNewNote={this.getNewNote} /></div>
+                <div>
+                    <DisplayNotes allNotes={this.state} simplifiedFunction={this.simplifiedFunction}></DisplayNotes>
+                </div>
+
             </div>
 
 

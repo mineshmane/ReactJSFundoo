@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NoteService from '../services/notesService'
 import { DisplayNotes } from '../components/DisplayNotes'
+import {CreateNote} from '../components/createNote'
 
 const notesService = new NoteService()
 
@@ -18,12 +19,23 @@ export class GetAllNotes extends Component {
 
 
     }
-
-
-    componentWillMount() {
-
-        this.getUpdateNotes();
+    slidecard = () => {
+        this.setState({
+            slidecards: !this.state.slidecards
+        })
     }
+
+
+    // componentWillMount() {
+
+    //     this.getUpdateNotes();
+    // }
+    componentDidMount(){
+        this.getUpdateNotes()
+    }
+    // componentWillUpdate(){
+    //     this.getUpdateNotes()
+    // }
 
     simplifiedFunction = () => {
         console.log(" it in the get all notes");
@@ -33,12 +45,13 @@ export class GetAllNotes extends Component {
 
     getUpdateNotes = async () => {
 
+        console.log(" getlabellist calling");
 
         await notesService.getAllNotes().then((response) => {
 
-            console.log(" response after getting all notes ", response);
+            // console.log(" response after getting all notes ", response);
             this.notes = response['data'].data.data
-            console.log(" data in array ", this.notes);
+            // console.log(" data in array ", this.notes);
 
 
             this.NotesArray = this.notes.filter(function (key) {
@@ -50,11 +63,11 @@ export class GetAllNotes extends Component {
 
             );
 
-            console.log("iem in data ", this.NotesArray);
+            console.log("revered data noees data ", this.NotesArray.reverse());
 
             this.setState({ allNotes: this.NotesArray })
 
-            console.log("this data", this.state.allNotes);
+            // console.log("this data", this.state.allNotes);
 
         })
             // notesService.getAllNotes().then((allNotes) => {
@@ -73,7 +86,16 @@ export class GetAllNotes extends Component {
     }
     render() {
         return (
-            <DisplayNotes allNotes={this.state.allNotes} simplifiedFunction={this.simplifiedFunction} ></DisplayNotes>
+
+
+            <div>
+                <div><CreateNote getNewNote={this.getNewNote} simplifiedFunction={this.simplifiedFunction} /></div>
+                <div>
+                    <DisplayNotes allNotes={this.state} simplifiedFunction={this.simplifiedFunction} ></DisplayNotes>
+                </div>
+
+            </div>
+
 
         )
     }

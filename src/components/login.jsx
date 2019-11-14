@@ -53,7 +53,7 @@ export default class Login extends Component {
                 // if (this.props.props.location.state !== undefined) {
                 //     this.props.props.history.push('/usercart');
                 //  } else     {
-                this.props.props.history.push('/dashboard');
+                this.props.props.history.push('/dashboard/notes');
                 //  }                  
 
             })
