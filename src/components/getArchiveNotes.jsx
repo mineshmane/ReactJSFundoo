@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { DisplayNotes } from '../components/DisplayNotes'
+import DisplayNotes  from '../components/DisplayNotes'
 import NoteService from '../services/notesService'
 
 const notesService = new NoteService()

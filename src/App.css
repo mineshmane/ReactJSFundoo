@@ -319,11 +319,12 @@ input.input:focus {
   cursor: pointer;
 }
 
-.take-note-user-card-description {
+.take-note-user-card-description{
   position: relative;
   display: flex;
   flex-direction: column;
   min-width: 0;
+  /* width:600px; */
   word-wrap: break-word;
   /* background-color: #fff; */
   background-clip: border-box;
@@ -466,6 +467,7 @@ input.input:focus {
 .list-view {
   height: auto;
   padding: 0% 26% 0 26%;
+  width:50%;
 }
 
 .list-view-archive {
@@ -514,6 +516,7 @@ input.input:focus {
 .list-view-allNotes {
   display: flex;
   flex-direction: column;
+  /* width:600; */
   justify-content: center;
 }
 

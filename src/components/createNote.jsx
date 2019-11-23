@@ -11,10 +11,24 @@ import { makeStyles } from '@material-ui/core/styles';
 // import MoreOptions from './MoreOptions'
 // import CollaboratorComponent from './CollaboratorComponent';
 // import AddImage from './AddImage';
+import { connect } from 'react-redux';
+
 import {GetAllNotes} from './getAllNotes'
 import { IconsComponent } from './Icons'
 const notesService = new GetAllNotes()
 
+
+
+
+
+
+
+const mapStateToProps = (state) => {
+    console.log("calling method", state);
+    return {
+        posts: state
+    }
+}
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
@@ -260,50 +274,21 @@ export class CreateNote extends Component {
                         </div>
                     </CardBody>
                     <CardBody className="create-card-bottom">
-                        {/* <Reminder
-                            toolsPropsToReminder={this.handleReminder}
-                            id="color-picker"
-                        >
-                        </Reminder> */}
+                       
 
-                        <CardLink>
-                            {/* <CollaboratorComponent
-                                CreateNoteToCollaborator={true}
-                                removeCollaborator={this.removeCollaborator}
-                                SaveCollaboratorToCreateNote={this.SaveCollaboratorToCreateNote}
-                            /> */}
-                        </CardLink>
+                       
 
-                        {/* <ColorPallete
-                            toolsPropsToColorpallete={this.handleColorChanger}
-                        /> */}
+                     
 
                         <CardLink
                             onClick={this.handleArchive}
                         >
-                            {/* <Tooltip title="Archive">
-                                <img className="img"
-                                    src={require('../assets/images/archived.svg')}
-                                    alt="color picker"
-                                />
-                            </Tooltip> */}
+                            
                         </CardLink>
-                        {/* <div style="Create-card-bottom"> */}
+                       
                             <IconsComponent></IconsComponent>
 
-                        {/* </div> */}
-
-                        {/* <AddImage
-                       AddImageToCreateNote = {this.AddImageToCreateNote}
-                       /> */}
-
-                        {/* <MoreOptions
-                            addLabelToCreateNote={this.addLabelToCreateNote}
-                            noteID={''}
-                            moreOptionsToCreateNoteforCreateNote = {this.moreOptionsToCreateNoteforCreateNote}
-                            createNoteLabel = {"true"}
-                        >
-                        </MoreOptions> */}
+                     
                         <CardLink ></CardLink>
 
                         <CardLink className="close-btn"
@@ -316,5 +301,6 @@ export class CreateNote extends Component {
         )
     }
 }
-export default CreateNote;
+// export default CreateNote;
 
+export default connect(mapStateToProps)(CreateNote);

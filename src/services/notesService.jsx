@@ -27,6 +27,8 @@ export default class NoteService {
     }
 
     getAllNotes() {
+        const token = localStorage.getItem("token")
+
         return axios.get(`${BaseURL}/getNotesList`, {
             headers: {
                 'Authorization': token
@@ -62,6 +64,8 @@ export default class NoteService {
     }
 
     getArchivedNotes() {
+        const token = localStorage.getItem("token")
+
         return axios.get(`${BaseURL}/getArchiveNotesList`, {
             headers: {
                 'Authorization': token
@@ -78,6 +82,8 @@ export default class NoteService {
 
 
     getLabels() {
+        const token = localStorage.getItem("token")
+
         return axios.get(`${labelurl}/getNoteLabelList`, {
             headers: {
                 'Authorization': token

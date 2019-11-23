@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NoteService from '../services/notesService'
-import { DisplayNotes } from '../components/DisplayNotes'
+import  DisplayNotes  from '../components/DisplayNotes'
 import {CreateNote} from '../components/createNote'
 
 const notesService = new NoteService()

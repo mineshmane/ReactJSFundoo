@@ -51,6 +51,8 @@ class DrawerMenu extends Component {
         //    / this.props.getReminder()
     }
     handleNotes = () => {
+        console.log(" props ",this.props);
+        
         this.props.props.history.push('/dashboard/notes')
     }
 

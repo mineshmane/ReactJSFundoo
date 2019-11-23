@@ -5,7 +5,7 @@ import { Router, browserHistory } from 'react-router'; // notice I'm importing f
 
 
 import NoteService from '../services/notesService'
-import { DisplayNotes } from '../components/DisplayNotes'
+import  DisplayNotes  from '../components/DisplayNotes'
 // import { DrawrMenuComponent } from '../components/DrawerMenu'
 const notesService = new NoteService()
 
