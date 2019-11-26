@@ -6,7 +6,14 @@ import NoteService from '../services/notesService'
 // import Menu from '@material-ui/core/Menu';
 // import MenuItem from '@material-ui/core/MenuItem';
 
+// import React from 'react';
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 
+
+import popMenu from './menus'
 import { IconButton, ClickAwayListener, Paper } from '@material-ui/core';
 
 
@@ -226,7 +233,11 @@ export class IconsComponent extends Component {
                 <IconButton style={{ backgroundColor: colorKey.hexCode, "margin": "2px", }}
                     value={colorKey.hexCode}
                     onClick={this.handleColorChanger}
+                    onMouseOver={this.handleColorToggle}
+
                 // onMouseOver={this.handleToggle}
+                onMouseLeave={this.handleColorToggle}
+
                 >
                 </IconButton>
             </Tooltip>
@@ -246,20 +257,26 @@ export class IconsComponent extends Component {
                     />
                 </Tooltip>
 
+
+
                 {/* <div onClick={this.handleClickOpen} style={{ cursor: 'pointer' }}> */}
-                <Tooltip title="Collaborator">
-                    <img
+               <Tooltip title="Collaborator">
+                     <img
                         src={require('../assets/images/colaborator.svg')}
                         alt="Collaborator"
                     />
-                </Tooltip>
+                       {/* <popMenu ></popMenu> */}
+                   
+                </Tooltip> 
+             
+               
                 {/* </div> */}
                 <Tooltip title="Change Color">
                     <img src={require('../assets/images/color.svg')}
                         className="img"
                         alt="change color"
                         onMouseOver={this.handleColorToggle}
-                        onClick={this.handleToggle}
+                        // onClick={this.handleToggle}
                     // onMouseLeave={this.handleColorToggle}
                     />
                 </Tooltip>
@@ -290,13 +307,40 @@ export class IconsComponent extends Component {
                         alt="color picker"
                     />
                 </Tooltip>
-                <Tooltip title="More">
+                {/* <Tooltip title="More">
                     <img src={require('../assets/images/more_options.svg')}
                         className="img"
                         alt="remind me"
                         onClick={this.handleToggle}
                     />
-                </Tooltip>
+                </Tooltip> */}
+
+<PopupState variant="popover" popupId="demo-popup-menu">
+                    {popupState => (
+                        <React.Fragment>
+                            {/* <Button variant="contained" color="primary" {...bindTrigger(popupState)}>
+                                Open Menu
+              </Button> */}
+
+              <img src={require('../assets/images/more_options.svg')}
+                        className="img"
+                        alt="remind me"
+                        {...bindTrigger(popupState)}
+                    />
+                            <Menu {...bindMenu(popupState)}>
+                                <MenuItem onClick={popupState.close}>Cake</MenuItem>
+                                <MenuItem onClick={popupState.close}></MenuItem>
+
+                                <MenuItem onClick={popupState.close}>addLabel</MenuItem>
+
+                                <MenuItem onClick={popupState.close}>delete Note</MenuItem>
+                                <MenuItem onClick={popupState.close}>add cheklist</MenuItem>
+
+
+                            </Menu>
+                        </React.Fragment>
+                    )}
+                </PopupState>
 
 
 
@@ -323,9 +367,7 @@ export class IconsComponent extends Component {
                                                 :
                                                 this.props.isTrashed === true ?
                                                     <div className="remind-day" onClick={this.handleDeleteNote}>
-                                                        {/* <div>
-                                                            Delete Forever
-                                                            </div> */}
+                                                      
                                                     </div>
                                                     :
                                                     <div >

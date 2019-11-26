@@ -12,6 +12,7 @@ import { GetArchivedNotes } from './components/getArchiveNotes'
 import { GetTrashNotes } from './components/getTrashNotes'
 import {NotesByLabel} from './components/getNoteByLabel'
 import  { DashboardComponent } from './components/dashboard'
+import popMenu from './components/menus'
 // import { Registration } from './components/registration';
 // import { Login } from './components/login';
 function App() {
@@ -28,6 +29,7 @@ function App() {
       <Route path="/dashboard/notes" component={GetAllNotes} />
       <Route path="/createNote" component={createNote} />
       <Route path="/dashboard/reminder" component={GetReminderNotes} />
+      <Route path="/dashboard/menus" component={popMenu}></Route>
 
       <Route path="/dashboard/getNotesByLabel/:labelName" component={NotesByLabel} />
 
