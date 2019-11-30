@@ -62,7 +62,7 @@ export class IconsComponent extends Component {
             isDeleted: false,
             addLabel: false,
             label: '',
-          
+
 
         }
         // console.log("Color Component 37: ", this.props.props.noteID)
@@ -79,7 +79,7 @@ export class IconsComponent extends Component {
 
     handleAddLabel() {
         console.log(" add label called");
-        
+
         this.setState({ addLabel: !this.state.addLabel });
     }
     handleToggle = () => {
@@ -96,6 +96,11 @@ export class IconsComponent extends Component {
     handleColorToggle = () => {
         this.setState({ openColor: !this.state.openColor });
         //this.props.handleToggle(!this.state.open)
+    }
+    closePopper() {
+        this.setState({
+            openColor: false
+        })
     }
     handleArchiveNote = () => {
         var noteDta = {
@@ -208,7 +213,7 @@ export class IconsComponent extends Component {
     }
 
 
-    openReminder(){
+    openReminder() {
 
 
         this.setState({
@@ -233,10 +238,10 @@ export class IconsComponent extends Component {
                 <IconButton style={{ backgroundColor: colorKey.hexCode, "margin": "2px", }}
                     value={colorKey.hexCode}
                     onClick={this.handleColorChanger}
-                    onMouseOver={this.handleColorToggle}
+                    // onMouseOver={this.handleColorToggle}
 
                 // onMouseOver={this.handleToggle}
-                onMouseLeave={this.handleColorToggle}
+                // onMouseLeave={this.handleColorToggle}
 
                 >
                 </IconButton>
@@ -260,16 +265,16 @@ export class IconsComponent extends Component {
 
 
                 {/* <div onClick={this.handleClickOpen} style={{ cursor: 'pointer' }}> */}
-               <Tooltip title="Collaborator">
-                     <img
+                <Tooltip title="Collaborator">
+                    <img
                         src={require('../assets/images/colaborator.svg')}
                         alt="Collaborator"
                     />
-                       {/* <popMenu ></popMenu> */}
-                   
-                </Tooltip> 
-             
-               
+                    {/* <popMenu ></popMenu> */}
+
+                </Tooltip>
+
+
                 {/* </div> */}
                 <Tooltip title="Change Color">
                     <img src={require('../assets/images/color.svg')}
@@ -291,6 +296,28 @@ export class IconsComponent extends Component {
 
                         : null}
                 </Paper>
+
+
+                <PopupState variant="popover" popupId="demo-popup-menu">
+                    {ColorpopupState => (
+                        <React.Fragment>
+                            <img src={require('../assets/images/color.svg')}
+                                className="img"
+                                alt="change color"
+                                {...bindTrigger(ColorpopupState)}
+                            />
+
+
+                            <Menu {...bindMenu(ColorpopupState)}>
+                                {changeCardColor}
+
+
+
+
+                            </Menu>
+                        </React.Fragment>
+                    )}
+                </PopupState>
 
 
 
@@ -315,18 +342,18 @@ export class IconsComponent extends Component {
                     />
                 </Tooltip> */}
 
-<PopupState variant="popover" popupId="demo-popup-menu">
+                <PopupState variant="popover" popupId="demo-popup-menu">
                     {popupState => (
                         <React.Fragment>
                             {/* <Button variant="contained" color="primary" {...bindTrigger(popupState)}>
                                 Open Menu
               </Button> */}
 
-              <img src={require('../assets/images/more_options.svg')}
-                        className="img"
-                        alt="remind me"
-                        {...bindTrigger(popupState)}
-                    />
+                            <img src={require('../assets/images/more_options.svg')}
+                                className="img"
+                                alt="remind me"
+                                {...bindTrigger(popupState)}
+                            />
                             <Menu {...bindMenu(popupState)}>
                                 <MenuItem onClick={popupState.close}>Cake</MenuItem>
                                 <MenuItem onClick={popupState.close}></MenuItem>
@@ -367,7 +394,7 @@ export class IconsComponent extends Component {
                                                 :
                                                 this.props.isTrashed === true ?
                                                     <div className="remind-day" onClick={this.handleDeleteNote}>
-                                                      
+
                                                     </div>
                                                     :
                                                     <div >
