@@ -68,16 +68,11 @@ export class NotesByLabel extends Component {
 
         this.getNoteListByLabel();
     }
-    // componentDidMount() {
-    //     const { myKey } = this.props.match.params.labelName
-    //     console.log("hfhdf", myKey)
-    // }
+   
 
     async getNoteListByLabel() {
         console.log(" method calling");
-// this.setState.allNotes=null
-        // const label = this.props.match.params.labelName
-        // console.log("hfhdf", label)
+
 
      await   notesService.getNoteByLabel(this.label).then((response) => {
             console.log(" respoinse", response);

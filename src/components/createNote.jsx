@@ -3,14 +3,12 @@
 import React, { Component } from 'react'
 import { Card, CardText, CardBody, CardLink } from 'reactstrap'
 import NoteServices from '../services/notesService';
-// import ColorPallete from './Color';
+
 import Tooltip from '@material-ui/core/Tooltip';
 import { Chip, Avatar, InputBase } from '@material-ui/core';
-// import Reminder from './Reminder';
+
 import { makeStyles } from '@material-ui/core/styles';
-// import MoreOptions from './MoreOptions'
-// import CollaboratorComponent from './CollaboratorComponent';
-// import AddImage from './AddImage';
+
 import { connect } from 'react-redux';
 
 import {GetAllNotes} from './getAllNotes'

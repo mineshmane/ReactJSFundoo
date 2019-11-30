@@ -46,7 +46,7 @@ class DrawerMenu extends Component {
 
     // }
     handleReminder = () => {
-        // this.props.DrawerMenuToDashboard(true, false, false, false);
+       
         this.props.props.history.push('/dashboard/reminder');
         //    / this.props.getReminder()
     }
@@ -58,7 +58,7 @@ class DrawerMenu extends Component {
 
 
     handleArchived = () => {
-        // this.props.DrawerMenuToDashboard(false, false, true, false);
+       
         this.props.props.history.push('/dashboard/Archive');
     }
     handleTrashed = () => {
@@ -105,22 +105,7 @@ class DrawerMenu extends Component {
                                 props={this.props.props}
                                 simplifiedFunction={this.simplifiedFunction}
                             />
-                            {/* <MenuItem
-                                onClick={this.handleLabelOpen}
-                                className="drawer-links"
-                            >
-                                <div onClick={this.handleClickOpen} className="cursor-pointer">
-                                    <img className="update-card-img"
-                                        src={require('../assets/images/edit_label.svg')}
-                                        alt="color picker" />
-                                    <span className="fundoo-text-sidebar">Edit Labels</span>
-                                </div>
-
-
-                                <CreateLabel
-                            dialogValue = {this.state.openDialog}
-                            />
-                            </MenuItem> */}
+                          
 
 
                             <MenuItem

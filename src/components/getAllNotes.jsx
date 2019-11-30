@@ -70,16 +70,7 @@ export class GetAllNotes extends Component {
             // console.log("this data", this.state.allNotes);
 
         })
-            // notesService.getAllNotes().then((allNotes) => {
-            //     console.log(" data in notes ", this.allnotes);
-
-            //     var allNotesArray = [];
-            //     for (let i = allNotes.data.data.data.length - 1; i >= 0; i--) {
-            //         allNotesArray.push(allNotes.data.data.data[i])
-            //     }
-
-            //     console.log("this data", this.allNotesArray);
-            // })
+           
             .catch(err => {
                 console.log(err);
             })

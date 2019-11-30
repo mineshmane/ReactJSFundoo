@@ -45,15 +45,7 @@ export default class Registration extends Component {
    
     this.props.props.history.push("/login")
   }
-  // handleSignInInstead = (cartInfo) => {
-  //   // console.log("this registr ", cartInfo);
-  //   var data = {
-  //     'productId' : cartInfo.productId,
-  //     'cartId': cartInfo.cartId,
-
-  //   }
-  //   this.props.history.push("/signin",data)
-  // }
+ 
 
   handleChange = (e) => {
     console.log("event in reguister ",e.target.value);

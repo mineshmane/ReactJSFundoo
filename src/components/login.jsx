@@ -45,16 +45,13 @@ export default class Login extends Component {
                 localStorage.setItem('firstName', response.data.firstName);
                 localStorage.setItem('lastName', response.data.lastName);
                 localStorage.setItem('token', response.data.id);
-                // localStorage.setItem('token1', true);
+             
                 localStorage.setItem('userid', response.data.userId);
                 localStorage.setItem('email', response.data.email)
                 localStorage.setItem('ProfileImage', url + response.data.imageUrl);
-                // console.log("this.props", this);
-                // if (this.props.props.location.state !== undefined) {
-                //     this.props.props.history.push('/usercart');
-                //  } else     {
+            
                 this.props.props.history.push('/dashboard/notes');
-                //  }                  
+                           
 
             })
             .catch(error => {

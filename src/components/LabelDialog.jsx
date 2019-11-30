@@ -4,7 +4,7 @@ import { GetAllLabels } from './getLabelList'
 import NoteServices from '../services/notesService';
 
 
-// const notesService = new NoteService()
+
 
 export class CreateLabel extends Component {
     constructor(props) {

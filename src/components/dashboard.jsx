@@ -7,11 +7,10 @@ import { connect } from 'react-redux';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-// import { MuiThemeProvider, createMuiTheme, } from '@material-ui/core';
+
 import DrawerMenu from './DrawerMenu';
 import { Tooltip } from '@material-ui/core'
-// import UserProfile from './UserProfile';
-// import CreateNote from '../components/createNote';
+
 
 
 const thm = createMuiTheme({
@@ -210,9 +209,7 @@ class DashboardComponent extends Component {
                             props={this.props.props}
                         />
 
-                        {/* <div>
-                            <CreateNote getNewNote={this.getNewNote} />
-                        </div> */}
+                       
 
                     </AppBar>
                 </MuiThemeProvider>

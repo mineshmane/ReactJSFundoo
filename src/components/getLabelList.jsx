@@ -150,7 +150,7 @@ export class GetAllLabels extends Component {
         console.log(" in labellist");
 
         // this.props.simplifiedFunction(labelName)
-        // this.props.props.history.push(`/usernote/${labelName}`, labelName)
+       
         this.props.props.history.push(`/dashboard/getNotesByLabel/${labelName}`)
         // this.props.props.history.push(`/dashboard/getNotesByLabel`)
 

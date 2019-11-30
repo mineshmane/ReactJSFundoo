@@ -72,33 +72,11 @@ export default class UserDashboard extends Component {
                                     </div>
                                 }
                                 <div className={listView}>
-                                    {/* <GetAllNotes
-                                        ref={this.noteToCards}
-                                        searchNote={this.state.searchNote}
-                                        listGridView={this.state.listGridView}
-                                        isReminder={this.state.isReminder}
-                                        isArchive={this.state.isArchive}
-                                        isTrash={this.state.isTrash}
-                                        isNotes={this.state.isNotes}
-                                        props={this.props}
-                                    /> */}
+                                   
 
-                                {/* <DisplayNotes  ref={this.noteToCards}
-                                    searchNote={this.state.searchNote}
-                                        listGridView={this.state.listGridView}
-                                         isReminder={this.state.isReminder}
-                                       isArchive={this.state.isArchive}
-                                         isTrash={this.state.isTrash}
-                                         isNotes={this.state.isNotes}
-                                         props={this.props}/>  */}
+                               
                                 </div>
-                                {/* <div>
-                                <GetAllLabels
-                                GetAllLabelToDrawerMenu={this.GetAllLabelToDrawerMenu}
-                                >
-
-                                </GetAllLabels>
-                            </div> */}
+                               
                             </div>
                         }
                     </div>

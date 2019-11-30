@@ -1,7 +1,7 @@
-// import LabelService from '../services/LabelServices';
+
 import React, { Component } from 'react'
 import { Input, DialogActions, InputBase, Button, Tooltip } from '@material-ui/core'
-// import GetAllLabels from './GetAllLabels';
+
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -13,7 +13,7 @@ import {LabelService} from '../services/LabelService'
 import { GetAllLabels } from './getLabelList'
 
 const LabelServices = new LabelService();
-// const NoteServices = new NoteService();
+;
 
 export class CreateLabel extends Component {
     constructor(props) {
@@ -249,15 +249,3 @@ export class CreateLabel extends Component {
 
 
 
-// import React, { Component } from 'react';
-// export class CreateLabel extends Component {
-//     render() {
-//         return (
-
-//             <div>
-//                 edit label
-//             </div>
-//         )
-//     }
-
-// }

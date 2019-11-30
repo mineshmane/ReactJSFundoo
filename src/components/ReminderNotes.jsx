@@ -71,7 +71,7 @@ export class GetReminderNotes extends Component {
 
 
 
-            // <DrawrMenuComponent getReminder={this.getReminderNoteList}/>
+           
 
         )
     }
