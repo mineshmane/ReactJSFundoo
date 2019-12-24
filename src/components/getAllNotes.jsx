@@ -8,7 +8,7 @@ const notesService = new NoteService()
 export class GetAllNotes extends Component {
     constructor() {
         super()
-        this.getUpdateNotes();
+        // this.getUpdateNotes();
         this.state = {
             allNotes: [],
             open: false,

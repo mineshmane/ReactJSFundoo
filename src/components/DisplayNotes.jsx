@@ -121,12 +121,12 @@ class DisplayNotes extends Component {
 
     render() {
         const masonryOptions = {
-            transitionDuration: 0.5
+            transitionDuration: 0.9
         };
-        console.log("in display notes upadted component ", this.props.allNotes);
+        // console.log("in display notes upadted component ", this.props.allNotes);
 
-        console.log("in display notes ", this.props.posts.view)
-        console.log("in display notes ", this.props.posts.open)
+        // console.log("in display notes ", this.props.posts.view)
+        // console.log("in display notes ", this.props.posts.open)
 
         // let views = this.props.posts.map((post) => {
         //     return post.view
@@ -147,7 +147,6 @@ class DisplayNotes extends Component {
         var notes = this.props.allNotes.allNotes.map((key) => {
             return (
 
-
                 <div key={key.id} className={listgridview}>
 
                     <MuiThemeProvider theme={thm}>
@@ -159,6 +158,7 @@ class DisplayNotes extends Component {
                                     <div style={{ display: "flex" }}>
                                         <div style={{ width: "98%" }} className="wordBreakTitle">
                                             <InputBase
+
                                                 id="outlined-dense-multiline"
                                                 value={key.title}
                                                 onClick={() => this.handleToggleOpen(key.id, key.title, key.description)}
@@ -194,18 +194,20 @@ class DisplayNotes extends Component {
                                         }
                                     </div>
 
+                                    <div className="wordBreakDesc">
+                                        <InputBase
+                                            id="outlined-dense-multiline"
+                                            value={key.description}
+                                            onClick={() => this.handleToggleOpen(key.id, key.title, key.description)}
+                                            margin="dense"
+                                            variant="outlined"
+                                            readOnly
+                                            multiline
 
-                                    <InputBase
-                                        id="outlined-dense-multiline"
-                                        value={key.description}
-                                        onClick={() => this.handleToggleOpen(key.id, key.title, key.description)}
-                                        margin="dense"
-                                        variant="outlined"
-                                        readOnly
-                                        multiline
-                                        style={{ backgroundColor: key.color }}
-                                        placeholder="Description"
-                                    />
+                                            style={{ backgroundColor: key.color,  }}
+                                            placeholder="Description"
+                                        />
+                                    </div>
                                     {(key.reminder.length > 0) &&
                                         <div>
                                             <Chip

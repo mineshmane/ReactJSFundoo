@@ -112,6 +112,8 @@ export default class NoteService {
 
 
     changesColorNotes(note) {
+        const token = localStorage.getItem("token")
+
         return axios.post(`${BaseURL}/changesColorNotes`, note, {
             headers: {
                 'Authorization': token

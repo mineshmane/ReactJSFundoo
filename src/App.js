@@ -1,7 +1,7 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route,Redirect } from 'react-router-dom';
 import SignIn from './pages/login'
 import SignUp from './pages/sinUp'
 import UserDashboard from './pages/dashboardPage'
@@ -15,18 +15,32 @@ import  { DashboardComponent } from './components/dashboard'
 import popMenu from './components/menus'
 // import { Registration } from './components/registration';
 // import { Login } from './components/login';
+
+
+
+export const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={(props) => (
+    localStorage.getItem('token')
+      ? <Component {...props} />
+      : <Redirect to='/'/>
+  )} />
+)
 function App() {
+
+  
   return (
 
 
+   
+
     <Router>
-      <Route exact path="/login" component={SignIn} />
+      <Route exact path="/" component={SignIn} />
       {/* <Route path="/login" component={Login} /> */}
-      {/* <Route path="/login" component={SignIn} /> */}
+      <Route path="/login" component={SignIn} />
       {/* <Route path='/resetpassword/:token' component */}
       <Route path="/register" component={SignUp} />
       <Route path="/dashboard" component={UserDashboard} />
-      <Route path="/dashboard/notes" component={GetAllNotes} />
+      <PrivateRoute path="/dashboard/notes" exact component={GetAllNotes} />
       <Route path="/createNote" component={createNote} />
       <Route path="/dashboard/reminder" component={GetReminderNotes} />
       <Route path="/dashboard/menus" component={popMenu}></Route>
