@@ -121,7 +121,7 @@ class DisplayNotes extends Component {
 
     render() {
         const masonryOptions = {
-            transitionDuration: 0.9
+            // transitionDuration: 0.9
         };
         // console.log("in display notes upadted component ", this.props.allNotes);
 
